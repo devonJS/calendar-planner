@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Calendar Planner</h1>
+    <table class="table calendar">
+        <tr ng-repeat="time in calendar.data" class='noBorder'>
+            <td class="col-xs-2">
+                {{time.display}}
+            </td>
+            <td class="calendarEvent">
+                <div class="eventContainer col-xs-{{12 / (event.overlap + 1)}}" ng-repeat="event in time.events" ng-class="calendar.getClass(event)">
+                    <div ng-if="event.start">
+                        <span class='eventTitle'>{{event.title}}</span>
+                        <span class='eventAddress'>{{event.address}}</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
