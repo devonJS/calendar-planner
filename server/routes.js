@@ -2,7 +2,7 @@
 var path = require('path');
 
 module.exports = function(app) {
-    // app.use('/youtube', require("./api/youtube"));
+    app.use('/api/events', require("./api/events"));
     
     app.route('/*')
       .get(function(req, res) {

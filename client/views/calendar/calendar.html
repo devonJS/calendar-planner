@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container-responsive">
     <h1>Calendar Planner</h1>
-    <table class="table calendar">
+    <!-- <table class="table calendar">
         <tr ng-repeat="time in calendar.data" class='noBorder'>
-            <td class="col-xs-2">
+            <td class="col-xs-1">
                 {{time.display}}
             </td>
             <td class="calendarEvent">
-                <div class="eventContainer col-xs-{{12 / (event.overlap + 1)}}" ng-repeat="event in time.events" ng-class="calendar.getClass(event)">
+                <div class="eventContainer col-xs-{{12 / (event.overlap + 1)}}" ng-repeat="event in time.events" ng-class="calendar.getClass(event); calendar.getOffset(time.events)">
                     <div ng-if="event.start">
                         <span class='eventTitle'>{{event.title}}</span>
                         <span class='eventAddress'>{{event.address}}</span>
@@ -14,5 +14,50 @@
                 </div>
             </td>
         </tr>
-    </table>
+    </table> -->
+    <!-- <div class="calendarContainer"> 
+        <div class="row calendarRow" ng-repeat="time in calendar.data">
+            <div class='col-xs-11 col-xs-offset-1'>
+                <div class=" eventContainer col-xs-{{12 / (event.overlap + 1)}}" 
+                ng-repeat="event in time.events" 
+                ng-style="{'height': '{{35 * event.length}}px'}">
+                    <span class='eventTitle'>{{event.title}}</span>
+                    <span class='eventAddress'>{{event.address}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="backgroundContainer">
+        <div class="row calendarRow" ng-repeat="time in calendar.data">
+          <div class="col-xs-1">
+              {{time.display}}
+          </div>
+        </div>
+    </div> -->
+    
+    <div class="calendarContainer"> 
+        <div class="row calendarRow" ng-repeat="time in calendar.data">
+            <div class='col-xs-11 col-xs-offset-1 eventsContainer'>
+                <div ng-repeat="event in time.events">
+                    <div ng-if="event.length" class="eventContainer col-xs-{{12 / (event.overlap + 1)}}" 
+                    ng-style="{'height': '{{35 * event.length}}px'}">
+                        <div ng-if="event.start" class="eventContent">
+                          <span class='eventTitle'>{{event.title}}</span>
+                          <span class='eventAddress'>{{event.address}}</span>
+                        </div>
+                    </div>
+                    <div class="holderContainer col-xs-{{12 / (event.overlap + 1)}}" ng-if="!event.length">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="backgroundContainer">
+        <div class="row calendarRow" ng-repeat="time in calendar.data">
+          <div class="col-xs-1 timeCell" ng-class-even="'even-time-cell'">
+              {{time.display | timeFormat}}
+          </div>
+        </div>
+    </div>
 </div>
