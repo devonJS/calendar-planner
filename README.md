@@ -1,5 +1,7 @@
 # Calendar Planner
 
+![alt-tag](http://i.imgur.com/l4P3qk4.png)
+
 ### To Start
 
 At root directory (in command line):
